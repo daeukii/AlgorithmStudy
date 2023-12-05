@@ -2,7 +2,7 @@ package W1;
 
 import java.util.Scanner;
 
-public class W2_2 {
+public class W1_2 {
     public static void main(String[] args) {
         // 백준 10926번 https://www.acmicpc.net/problem/10926
         Scanner scanner = new Scanner(System.in);
