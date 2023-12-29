@@ -5,50 +5,33 @@ import java.util.Scanner;
 public class W5_1 {
     public static void main(String[] args) {
         // 백준 2738번 https://www.acmicpc.net/problem/2738
-        Scanner sc = new Scanner(System.in);
 
-        int N = sc.nextInt();
+        Scanner scanner = new Scanner(System.in);
 
-        int M = sc.nextInt();
+        // 첫줄 M, N 만큼 크기의 행렬 지정
+        String text = scanner.nextLine();
+        String[] tmp = text.split(" ");
+        int[][] MN = new int[Integer.parseInt(tmp[0])][Integer.parseInt(tmp[1])];
 
-        int[][] arr = new int[N][M];
-
-        int[][] arr2 = new int[N][M];
-
-        for (int i=0; i<N; i++) {
-
-            for (int j=0; j<M; j++) {
-
-                arr[i][j] = sc.nextInt();
-
+        // 처음 M x N 만큼의 데이터는 단순 입력
+        for (int i = 0; i < Integer.parseInt(tmp[0]); i++) {
+            for (int j = 0; j < Integer.parseInt(tmp[1]); j++) {
+                MN[i][j] = scanner.nextInt();
             }
-
         }
 
-        for (int i=0; i<N; i++) {
+        // 다음 M x N 만큼의 데이터는 누적 합
+        for (int i = 0; i < Integer.parseInt(tmp[0]); i++) {
+            for (int j = 0; j < Integer.parseInt(tmp[1]); j++) {
 
-            for (int j=0; j<M; j++) {
-
-                arr2[i][j] = sc.nextInt();
-
-            }
-
-        }
-
-        for (int i=0; i<N; i++) {
-
-            for (int j=0; j<M; j++) {
-
-                System.out.print(arr[i][j]+arr2[i][j]+" ");
-
-                if(j == M-1) {
-
-                    System.out.println();
+                // 출력 형식 조정
+                if (j == Integer.parseInt(tmp[1]) - 1) {
+                    System.out.println(scanner.nextInt() + MN[i][j]);
+                } else {
+                    System.out.print((scanner.nextInt() + MN[i][j]) + " ");
 
                 }
-
             }
-
         }
     }
 }

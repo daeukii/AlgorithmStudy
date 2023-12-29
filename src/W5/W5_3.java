@@ -1,34 +1,40 @@
 package W5;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class W5_3 {
-    public static void main(String[] args) throws IOException {
-        // 백준 10798번 https://www.acmicpc.net/problem/10798
-        //Input
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) {
+        // 백준 10798 https://www.acmicpc.net/problem/10798
+        Scanner scanner = new Scanner(System.in);
 
-        int n = 5, max = 0;
-        String[] l = new String[n];
-        StringBuilder sb = new StringBuilder();
+        char[][] NArray = new char[5][15];
+        // 총 5줄, 한줄에 최대 15개의 글자들이 입력됨.
 
-        for (int i = 0; i < n; i++) {
-            l[i] = br.readLine();
-            max = Math.max(max, l[i].length());
-        }
+        int max = 0; //입력받는 문자열 중 가장 긴 문자열의 길이
 
+        for(int i=0; i<5; i++) {
+            String str = scanner.next();
+            //5줄을 입력받음
 
-        for (int i = 0; i < max; i++) {//열
-            for (int j = 0; j < n; j++) { //행은 n=5로 고정
-                if (l[j].length()<=i) continue;
-                sb.append(l[j].charAt(i));
-                //System.out.println(i+" "+j);
+            max = Math.max(max, str.length());
+            //가장 긴 문자열의 길이를 max에 담는다.
+
+            for(int j=0; j<str.length(); j++) {
+                NArray[i][j] = str.charAt(j);
+                //배열에 담기
             }
         }
 
-        bw.write(sb.toString());
-        bw.flush();
-        bw.close();
+        for(int i=0; i<max; i++) {
+            for(int j=0; j<5; j++) {
+                if(NArray[j][i]=='\0') {
+                    continue;
+                    //char 배열의 초기값은 \0 이다.
+                }
+
+                System.out.print(NArray[j][i]);
+            }
+        }
     }
 }
